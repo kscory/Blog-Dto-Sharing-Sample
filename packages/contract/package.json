@@ -13,6 +13,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json"
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "build:skip": "tsc -p tsconfig.build.json --skipLibCheck"
   }
 }

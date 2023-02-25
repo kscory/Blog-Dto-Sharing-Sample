@@ -15,6 +15,19 @@
     "declaration": true,
     "removeComments": true,
     "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "plugins": [
+      {
+        "transform": "@nestia/core/lib/transform",
+        "validate": "assert",
+        "stringify": "is"
+      },
+      { "transform": "typia/lib/transform" },
+      { "transform": "typescript-transform-paths" }
+    ]
+  },
+  "ts-node": {
+    "compiler": "ttypescript",
+    "files": true
   }
 }
