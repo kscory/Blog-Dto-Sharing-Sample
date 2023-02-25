@@ -1,0 +1,19 @@
+### Create User
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "id": "514a1115-f21e-49ee-b6a6-4cd3fab75255",
+  "type": "customer",
+  "age": 25,
+  "email": "sample@kscory.com",
+  "password": "1234"
+}
+
+### Get Users
+GET http://localhost:3000/api/users
+Content-Type: application/json
+
+### Get User by id
+GET http://localhost:3000/api/users/514a1115-f21e-49ee-b6a6-4cd3fab75255
+Content-Type: application/json
