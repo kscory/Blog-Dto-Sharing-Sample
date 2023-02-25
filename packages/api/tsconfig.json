@@ -24,7 +24,10 @@
       },
       { "transform": "typia/lib/transform" },
       { "transform": "typescript-transform-paths" }
-    ]
+    ],
+    "paths": {
+      "@lee-kyungseok/blog-dto-sharing-sample-contract": ["@lee-kyungseok/blog-dto-sharing-sample-contract"]
+    }
   },
   "ts-node": {
     "compiler": "ttypescript",

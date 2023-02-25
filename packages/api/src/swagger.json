@@ -1,0 +1,316 @@
+{
+  "openapi": "3.0.1",
+  "servers": [
+    {
+      "url": "https://github.com/samchon/nestia",
+      "description": "insert your server url"
+    }
+  ],
+  "paths": {
+    "/api/users": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "description": "생성할 유저 정보",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUser"
+              }
+            }
+          },
+          "required": true,
+          "x-nestia-encrypted": false
+        },
+        "responses": {
+          "201": {
+            "description": "생성한 유저 정보",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserView"
+                }
+              }
+            },
+            "x-nestia-encrypted": false
+          }
+        },
+        "description": "유저를 생성한다.",
+        "x-nestia-namespace": "api.users.createUser",
+        "x-nestia-jsDocTags": [
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "command",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "생성할 유저 정보",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "returns",
+            "text": [
+              {
+                "text": "생성한 유저 정보",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "유저 정보 리스트",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserView"
+                  },
+                  "nullable": false
+                }
+              }
+            },
+            "x-nestia-encrypted": false
+          }
+        },
+        "description": "모든 유저 정보를 가져온다.",
+        "x-nestia-namespace": "api.users.getUsers",
+        "x-nestia-jsDocTags": [
+          {
+            "name": "returns",
+            "text": [
+              {
+                "text": "유저 정보 리스트",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "/api/users/{userId}": {
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "가져올 유저의 id",
+            "schema": {
+              "type": "string",
+              "nullable": false
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "유저 정보",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserView"
+                }
+              }
+            },
+            "x-nestia-encrypted": false
+          }
+        },
+        "description": "유저를 가져온다.",
+        "x-nestia-namespace": "api.users.getUser",
+        "x-nestia-jsDocTags": [
+          {
+            "name": "param",
+            "text": [
+              {
+                "text": "userId",
+                "kind": "parameterName"
+              },
+              {
+                "text": " ",
+                "kind": "space"
+              },
+              {
+                "text": "가져올 유저의 id",
+                "kind": "text"
+              }
+            ]
+          },
+          {
+            "name": "returns",
+            "text": [
+              {
+                "text": "유저 정보",
+                "kind": "text"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false,
+            "description": "생성할 유저 id",
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "uuid"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "uuid",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "uuid"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "customer"
+            ],
+            "nullable": false,
+            "description": "유저의 유형",
+            "x-typia-required": true
+          },
+          "age": {
+            "type": "number",
+            "nullable": false,
+            "description": "유저 나이",
+            "x-typia-metaTags": [
+              {
+                "kind": "minimum",
+                "value": 14
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "minimum",
+                "text": [
+                  {
+                    "text": "14",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "minimum": 14
+          },
+          "email": {
+            "type": "string",
+            "nullable": false,
+            "description": "유저 이메일 정보",
+            "x-typia-metaTags": [
+              {
+                "kind": "format",
+                "value": "email"
+              }
+            ],
+            "x-typia-jsDocTags": [
+              {
+                "name": "format",
+                "text": [
+                  {
+                    "text": "email",
+                    "kind": "text"
+                  }
+                ]
+              }
+            ],
+            "x-typia-required": true,
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "nullable": false,
+            "description": "유저 패스워드",
+            "x-typia-required": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "type",
+          "age",
+          "email",
+          "password"
+        ],
+        "description": "생성할 유저의 정보",
+        "x-typia-jsDocTags": []
+      },
+      "UserView": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false,
+            "x-typia-required": true
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "customer"
+            ],
+            "nullable": false,
+            "x-typia-required": true
+          },
+          "age": {
+            "type": "number",
+            "nullable": false,
+            "x-typia-required": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": false,
+            "x-typia-required": true
+          },
+          "signedAt": {
+            "type": "string",
+            "nullable": false,
+            "x-typia-required": true
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id",
+          "type",
+          "age",
+          "email",
+          "signedAt"
+        ],
+        "x-typia-jsDocTags": []
+      }
+    }
+  }
+}
