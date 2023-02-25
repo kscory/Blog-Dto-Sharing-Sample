@@ -1,0 +1,103 @@
+{
+  "name": "root",
+  "version": "1.1",
+  "private": true,
+  "description": "Dto sharing sample codes",
+  "engines": {
+    "node": ">= 16.14.0"
+  },
+  "author": "Cory",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lee-k/camellia-main-server.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "prettier": "prettier",
+    "prettier:check": "prettier --ignore-path ./.prettierignore --check ./",
+    "prettier:fix": "prettier --ignore-path ./.prettierignore --write ./",
+    "lint": "eslint '{packages,apps,libs,tests}/**/*{.js,.ts,.jsx,.tsx}'",
+    "lint:diff": "eslint $(git diff --name-only --diff-filter=duxb origin/main | grep '\\.jsx$\\|\\.js$\\|\\.tsx$\\|\\.ts$\\?$')",
+    "lint:fix": "eslint '{packages,apps,libs,tests}/**/*{.js,.ts,.jsx,.tsx}' --fix",
+    "pre-commit": "yarn lint-staged",
+    "prepare": "husky install",
+    "package_hash": "lerna run package_hash",
+    "test:setup": "./scripts/runTestMysql.sh start && NODE_ENV=test yarn run migration:run-main && NODE_ENV=test yarn run migration:run-admin",
+    "test": "lerna run test",
+    "test:package_hash": "lerna run test:package_hash",
+    "test:build": "lerna run test:build",
+    "test:build:cache": "lerna run test:build:cache",
+    "test:unit": "lerna run test:unit",
+    "build": "lerna run build",
+    "build:all": "lerna run build && lerna run test:build",
+    "build:packages": "lerna run build --ignore @gameper/camellia-app-*",
+    "build:cache": "lerna run build:cache",
+    "publish": "lerna publish from-package",
+    "start:buildChecker": "lerna run start:buildChecker",
+    "start:admin": "yarn workspace @gameper/camellia-app-admin start:dev",
+    "start:admin-client": "yarn workspace @gameper/camellia-app-admin-client start:dev",
+    "start:chat-socket-server": "yarn workspace @gameper/camellia-app-chat-socket-server start:dev",
+    "start:master-api": "yarn workspace @gameper/camellia-app-master-api start:dev",
+    "typeorm": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js",
+    "migration:create": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:create -d database -n",
+    "migration:run": "yarn run migration:run-main && yarn run migration:run-admin",
+    "migration:run-main": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:run --config database/main/migrations/ormconfig.js",
+    "migration:run-admin": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:run --config database/admin/migrations/ormconfig.js",
+    "migration:revert-main": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:revert --config database/main/migrations/ormconfig.js",
+    "migration:revert-admin": "ts-node --project tsconfig.json ./node_modules/typeorm/cli.js migration:revert --config database/admin/migrations/ormconfig.js"
+  },
+  "lint-staged": {
+    "packages/**/*.{ts,js}": [
+      "prettier --ignore-path ./.prettierignore --write"
+    ],
+    "apps/**/*.{ts,js}": [
+      "prettier --ignore-path ./.prettierignore --write"
+    ]
+  },
+  "dependencies": {
+    "dotenv": "16.0.0",
+    "lodash": "4.17.21",
+    "reflect-metadata": "0.1.13",
+    "rimraf": "3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.17.5",
+    "@babel/register": "7.17.0",
+    "@faker-js/faker": "7.6.0",
+    "@types/chai": "4.3.0",
+    "@types/chai-as-promised": "7.1.5",
+    "@types/jest": "^27.5.2",
+    "@types/lodash": "4.14.179",
+    "@types/node": "^16.11.39",
+    "@typescript-eslint/eslint-plugin": "5.12.0",
+    "@typescript-eslint/parser": "5.12.0",
+    "chai": "4.3.6",
+    "chai-as-promised": "7.1.1",
+    "eslint": "8.9.0",
+    "eslint-config-google": "0.14.0",
+    "eslint-config-prettier": "8.4.0",
+    "eslint-plugin-import": "2.25.4",
+    "husky": "7.0.4",
+    "jest": "27.5.1",
+    "lerna": "^4.0.0",
+    "lint-staged": "12.3.4",
+    "mocha": "9.2.1",
+    "nock": "13.2.4",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.5.1",
+    "ts-jest": "27.1.3",
+    "ts-node": "10.5.0",
+    "tsc-watch": "4.6.0",
+    "tsconfig-paths": "3.12.0",
+    "typeorm": "0.2.43",
+    "typescript": "4.5.5"
+  }
+}
