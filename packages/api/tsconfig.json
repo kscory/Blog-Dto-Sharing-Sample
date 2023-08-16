@@ -3,7 +3,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
-    "target": "es2017",
+    "target": "es2021",
     "module": "commonjs",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -16,6 +16,9 @@
     "removeComments": true,
     "incremental": true,
     "skipLibCheck": true,
+    "paths": {
+      "@kscory/blog-dto-sharing-sample-contract": ["@kscory/blog-dto-sharing-sample-contract"]
+    },
     "plugins": [
       {
         "transform": "@nestia/core/lib/transform",
@@ -23,11 +26,10 @@
         "stringify": "is"
       },
       { "transform": "typia/lib/transform" },
-      { "transform": "typescript-transform-paths" }
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
     ]
   },
-  "ts-node": {
-    "compiler": "ttypescript",
-    "files": true
-  }
+  "include": ["src", "src/**/*.json"],
+  "exclude": ["node_modules", "dist"]
 }

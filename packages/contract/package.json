@@ -1,5 +1,5 @@
 {
-  "name": "@lee-kyungseok/blog-dto-sharing-sample-contract",
+  "name": "@kscory/blog-dto-sharing-sample-contract",
   "version": "1.0.0",
   "description": "contract for sample app",
   "author": "Lee Kyung Seok (Cory)",
@@ -7,13 +7,13 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lee-KyungSeok/Blog-Dto-Sharing-Sample.git"
+    "url": "https://github.com/kscory/Blog-Dto-Sharing-Sample.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json",
-    "build:skip": "tsc -p tsconfig.build.json --skipLibCheck"
+    "build": "rm -rf dist && tsc",
+    "build:skip": "tsc"
   }
 }

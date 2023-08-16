@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUser, UserView } from '@lee-kyungseok/blog-dto-sharing-sample-contract';
+import { CreateUser, UserView } from '@kscory/blog-dto-sharing-sample-contract';
 import { UserRepository } from '../repositories/UserRepository';
 
 @Injectable()

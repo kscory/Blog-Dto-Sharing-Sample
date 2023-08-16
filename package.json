@@ -4,7 +4,7 @@
   "private": true,
   "description": "Dto sharing sample codes",
   "engines": {
-    "node": ">= 16.14.0"
+    "node": ">= 18.16.0"
   },
   "author": "Cory",
   "license": "MIT",
@@ -15,12 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lee-KyungSeok/Blog-Dto-Sharing-Sample.git"
+    "url": "https://github.com/kscory/Blog-Dto-Sharing-Sample.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
+    "prepare": "ts-patch install",
     "build": "lerna run build",
     "publish": "lerna publish from-package"
   },
@@ -28,22 +29,18 @@
     "dotenv": "16.0.3"
   },
   "devDependencies": {
-    "@babel/core": "7.21.0",
-    "@babel/register": "7.21.0",
-    "@types/node": "^18.14.1",
-    "@typescript-eslint/eslint-plugin": "5.53.0",
-    "@typescript-eslint/parser": "5.53.0",
-    "eslint": "8.34.0",
-    "eslint-config-prettier": "8.6.0",
-    "eslint-plugin-import": "2.27.5",
-    "inquirer": "8.2.5",
-    "lerna": "6.5.1",
+    "@types/node": "^18.15.3",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "lerna": "^7.1.5",
     "npm-run-all": "4.1.5",
-    "ts-node": "10.9.1",
-    "ts-node-dev": "2.0.0",
-    "tsc-watch": "6.0.0",
-    "tsconfig-paths": "^4.0.0",
-    "ttypescript": "1.5.15",
-    "typescript": "4.9.5"
+    "ts-node": "^10.9.1",
+    "ts-patch": "^3.0.2",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.1.6",
+    "typescript-transform-paths": "^3.4.6"
   }
 }

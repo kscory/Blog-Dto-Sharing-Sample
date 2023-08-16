@@ -1,7 +1,7 @@
 import { Controller, HttpCode } from '@nestjs/common';
 import { TypedBody, TypedParam, TypedRoute } from '@nestia/core';
+import { CreateUser, UserView } from '@kscory/blog-dto-sharing-sample-contract';
 import { UserService } from '../services/UserService';
-import { CreateUser, UserView } from '@lee-kyungseok/blog-dto-sharing-sample-contract';
 
 @Controller('api/users')
 export class UserController {

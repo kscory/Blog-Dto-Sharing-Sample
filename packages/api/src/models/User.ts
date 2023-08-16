@@ -1,4 +1,4 @@
-import { UserType } from '@lee-kyungseok/blog-dto-sharing-sample-contract';
+import { UserType } from '@kscory/blog-dto-sharing-sample-contract';
 
 export interface User {
     id: string;
